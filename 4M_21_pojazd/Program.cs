@@ -31,7 +31,8 @@
     class Pojazd
     {
         private int id, rocznik, przebieg, cena;
-        private string marka, model, kolor;
+        public string marka { get; private set; }
+        private string model, kolor;
         public Pojazd(int id, string marka, string model, string kolor,
             int rocznik, int przebieg, int cena)
         {
@@ -182,6 +183,20 @@
                 Console.WriteLine(p);
             }
 
+            Console.WriteLine("wszystkie pojazdy z listy");
+            foreach (var p in pojazd)
+            {
+                Console.WriteLine(p);
+            }
+            Console.WriteLine("tylko Fordy");
+            IEnumerable<Pojazd> fordy =
+                from p in pojazd
+                where p.marka == "Ford"
+                select p;
+            foreach (var p in fordy)
+            {
+                Console.WriteLine(p);
+            }
 
         }
     }
